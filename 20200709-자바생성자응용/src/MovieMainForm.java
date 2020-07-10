@@ -1,9 +1,12 @@
 import javax.swing.*;	// 윈도우 관련 클래스
+import javax.swing.border.LineBorder;
+
 import java.awt.*;		// 레이아웃(화면 배치)
 import java.awt.event.*;	//버튼, 텍스트에 엔터 => 행위(이벤트)
+import java.net.URL;
 // 자바에서 지원하는 윈도우의 모든 기능을 사용한다
 // 자바에서 상속은 한개만 가능 (단일상속)
-public class MovieMainForm extends JFrame implements ActionListener{
+public class MovieMainForm extends JFrame implements ActionListener,MouseListener{
 	JMenuBar bar=new JMenuBar();
 	JMenuItem home=new JMenuItem("Home");
 	JMenuItem find=new JMenuItem("찾기");
@@ -13,6 +16,10 @@ public class MovieMainForm extends JFrame implements ActionListener{
 	MovieList ml=new MovieList();
 	MovieDetail md=new MovieDetail();
 	MovieFind mf=new MovieFind();
+	
+	int curpage=1;	// 현재 페이지	
+	int totalpage=194; // 총 페이지 ==> 명시적인 초기화
+	
 	MovieMainForm() {
 		// 메뉴 설정
 		JMenu menu=new JMenu("메뉴");
@@ -37,6 +44,43 @@ public class MovieMainForm extends JFrame implements ActionListener{
 		home.addActionListener(this);
 		find.addActionListener(this);
 		exit.addActionListener(this);
+		
+		ml.b1.addActionListener(this); // 이전
+		ml.b2.addActionListener(this); // 다음
+		
+		moviePrint(1);
+		
+		for(int i=0; i<2; i++)
+		{
+			for(int j=0; j<5; j++)
+			{
+				ml.movie[i][j].addMouseListener(this);
+			}
+		}
+	}
+	void moviePrint(int page)
+	{
+		MovieVO[] movies=MovieManager.movieListData(page);
+		int k=0;
+		for(MovieVO vo:movies)
+		{
+			try
+			{
+				// 포스터 읽기
+				URL url=new URL(vo.poster);
+				Image img=getImage(new ImageIcon(url),ml.movie[0][0].getWidth(),ml.movie[0][0].getHeight());
+				ml.movie[k/5][k%5].setIcon(new ImageIcon(img));
+				k++;
+				
+			}catch(Exception ex) {}
+		}
+		ml.pLa.setText(curpage+" page / "+totalpage+" pages");
+	}
+
+	static Image getImage(ImageIcon ii, int w, int h)
+	{
+		Image dimg = ii.getImage().getScaledInstance(w,h,Image.SCALE_SMOOTH);
+		return dimg;
 	}
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
@@ -58,6 +102,64 @@ public class MovieMainForm extends JFrame implements ActionListener{
 		else if(e.getSource()==exit)
 		{
 			System.exit(0);
+		}
+		else if(e.getSource()==ml.b1)	// 이전
+		{
+			if(curpage>1)
+			{
+				curpage--;
+				moviePrint(curpage);
+			}
+		}
+		else if(e.getSource()==ml.b2)	// 다음
+		{
+			if(curpage<totalpage)
+			{
+				curpage++;
+				moviePrint(curpage);
+			}
+		}
+	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		for(int i=0; i<2; i++)
+		{
+			for(int j=0; j<5; j++)
+			{
+				if(e.getSource()==ml.movie[i][j])
+				{
+					LineBorder line=new LineBorder(Color.white,5);
+					ml.movie[i][j].setBorder(line);
+				}
+			}
+		}
+		
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		for(int i=0; i<2; i++)
+		{
+			for(int j=0; j<5; j++)
+			{
+				ml.movie[i][j].setBorder(null);
+			}
 		}
 	}
 
