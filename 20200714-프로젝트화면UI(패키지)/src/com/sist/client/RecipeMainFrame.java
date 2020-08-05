@@ -18,7 +18,7 @@ public class RecipeMainFrame extends JFrame implements ActionListener{
 		// Layout => 화면 배치
 		setLayout(card);
 		// 화면 추가
-		add("RM",rm);
+		//add("RM",rm);
 		add("LOGIN",login);
 		add("JOIN",join);
 		setSize(1024,960);
