@@ -12,7 +12,7 @@ DefaultTableModel model;
 JButton b1,b2;
 public ChatForm()
 {
-	   //setBackground(Color.yellow);
+		setBackground(Color.white);
 	   setLayout(null);
 	   ta=new JTextPane();
 	   ta.setEditable(false);
@@ -50,6 +50,6 @@ public ChatForm()
 	   p.add(b2);
 	   p.setBounds(865, 155, 500, 35);
 	   add(p);
-	   
+	   p.setBackground(Color.white);
 }
 }

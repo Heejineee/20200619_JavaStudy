@@ -13,6 +13,7 @@ public class NewsForm extends JPanel implements ActionListener{
    JPanel p=new JPanel();
    public NewsForm()
    {
+	   setBackground(Color.white);
 	   setLayout(new BorderLayout());
 	   NewsManager m=new NewsManager();
 	   
@@ -35,9 +36,13 @@ public class NewsForm extends JPanel implements ActionListener{
 	   b1=new JButton("¿Ã¿¸");
 	   b2=new JButton("¥Ÿ¿Ω");
 	   la=new JLabel("1 page / 11 pages");
+	   b1.setFont(new Font("∏º¿∫ ∞ÌµÒ",Font.PLAIN,12));
+	   b2.setFont(new Font("∏º¿∫ ∞ÌµÒ",Font.PLAIN,12));
+	   la.setFont(new Font("∏º¿∫ ∞ÌµÒ",Font.PLAIN,12));
 	   JPanel ppp=new JPanel();
 	   ppp.add(b1); ppp.add(la); ppp.add(b2);
 	   add("South",ppp);
+	   ppp.setBackground(Color.white);
 	   
 	   b1.addActionListener(this);
 	   b2.addActionListener(this);

@@ -16,13 +16,15 @@ import java.net.*;
 import java.util.*;
 
 public class ClientMainFrame extends JFrame implements ActionListener,MouseListener,Runnable{
- 
-	JLabel title=new JLabel("레몬마켓",JLabel.CENTER);
+	 ImageIcon lemon;
+	JLabel title=new JLabel("레몬마켓",new ImageIcon("c:\\javaDev\\lemon.png"),JLabel.CENTER);
 	MenuForm mf=new MenuForm();
 	ChatForm cf=new ChatForm();
 	DetailForm df=new DetailForm();
 	Login login=new Login();
 	ControllPanel cp;
+	talingListForm lf2=new talingListForm();
+	BugsListForm bl=new BugsListForm();
 	int curpage=1;
 	int totalpage=16;
 	
@@ -31,8 +33,8 @@ public class ClientMainFrame extends JFrame implements ActionListener,MouseListe
 	BufferedReader in; 
 	public ClientMainFrame()
 	{
-		cp=new ControllPanel(this);
 		
+		cp=new ControllPanel(this);
 		title.setFont(new Font("맑은 고딕",Font.BOLD,55));
 		//title.setOpaque(true);
 		//title.setBackground(Color.magenta);
@@ -52,10 +54,14 @@ public class ClientMainFrame extends JFrame implements ActionListener,MouseListe
 		setSize(1600, 1000);
 		//setVisible(true);
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);// X버튼 클릭시 종료
+		 getContentPane().setBackground(Color.white);
 		
 		mf.b1.addActionListener(this);
 		mf.b2.addActionListener(this);
+		mf.b3.addActionListener(this);
+		mf.b4.addActionListener(this);
 		mf.b5.addActionListener(this);
+		mf.b6.addActionListener(this);
 		
 		cp.ff.b1.addActionListener(this);// 이전
 		cp.ff.b2.addActionListener(this);// 다음
@@ -69,6 +75,27 @@ public class ClientMainFrame extends JFrame implements ActionListener,MouseListe
 		cp.lf.b6.addActionListener(this);
 		cp.lf.tf.addActionListener(this);
 		
+		cp.lf2.b1.addActionListener(this);
+		cp.lf2.b2.addActionListener(this);
+		cp.lf2.b3.addActionListener(this);
+		cp.lf2.b4.addActionListener(this);
+		cp.lf2.b5.addActionListener(this);
+		cp.lf2.b6.addActionListener(this);
+		cp.lf2.tf.addActionListener(this);
+		
+		cp.gf.b1.addActionListener(this);
+		cp.gf.b2.addActionListener(this);
+		cp.gf.b3.addActionListener(this);
+		cp.gf.b4.addActionListener(this);
+		cp.gf.b5.addActionListener(this);
+		cp.gf.b6.addActionListener(this);
+		cp.gf.tf.addActionListener(this);
+		
+		cp.bl.b1.addActionListener(this);
+		cp.bl.b2.addActionListener(this);
+		cp.bl.b3.addActionListener(this);
+		cp.bl.b4.addActionListener(this);
+		cp.bl.tf.addActionListener(this);
 		
 		// 로그인 처리 
 		login.b1.addActionListener(this);
@@ -79,11 +106,7 @@ public class ClientMainFrame extends JFrame implements ActionListener,MouseListe
 		
 		// 채팅 
 		cf.tf.addActionListener(this);
-		
-		/*
-		 * for(int i=0;i<10;i++) { cp.ff.mc[i].addMouseListener(this); }
-		 */
-		
+				
 	}  
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
@@ -108,9 +131,106 @@ public class ClientMainFrame extends JFrame implements ActionListener,MouseListe
 		{
 			cp.card.show(cp, "LF");
 		}
+		else if(e.getSource()==mf.b3)
+		{
+			cp.card.show(cp, "LF2");
+		}
+		else if(e.getSource()==mf.b4)
+		{
+			cp.card.show(cp, "GF");
+		}
 		else if(e.getSource()==mf.b5)
 		{
+			cp.card.show(cp, "BL");
+		}
+		else if(e.getSource()==mf.b6)
+		{
 			cp.card.show(cp, "NF");
+		}
+		else if(e.getSource()==cp.lf2.b1)
+		{
+			cp.lf2.talingAllDate(1);
+		}
+		else if(e.getSource()==cp.lf2.b2)
+		{
+			cp.lf2.talingAllDate(2);
+		}
+		else if(e.getSource()==cp.lf2.b3)
+		{
+			cp.lf2.talingAllDate(3);
+		}
+		else if(e.getSource()==cp.lf2.b4)
+		{
+			cp.lf2.talingAllDate(4);
+		}
+		else if(e.getSource()==cp.lf2.b5)
+		{
+			cp.lf2.talingAllDate(5);
+		}
+		else if(e.getSource()==cp.lf2.b6 || e.getSource()==cp.lf2.tf)
+		{
+			String ss=cp.lf2.tf.getText();
+			if(ss.length()<1)
+			{
+				JOptionPane.showMessageDialog(this, "검색어를 입력하세요");
+				cp.lf2.tf.requestFocus();
+				return; 
+			}
+			cp.lf2.talingFindData(ss);
+		}
+else if(e.getSource()==cp.gf.b1)
+		{
+			cp.gf.MangoAllData(1);
+		}
+		else if(e.getSource()==cp.gf.b2)
+		{
+			cp.gf.MangoAllData(2);
+		}
+		else if(e.getSource()==cp.gf.b3)
+		{
+			cp.gf.MangoAllData(3);
+		}
+		else if(e.getSource()==cp.gf.b4)
+		{
+			cp.gf.MangoAllData(4);
+		}
+		else if(e.getSource()==cp.gf.b5)
+		{
+			cp.gf.MangoAllData(5);
+		}
+		else if(e.getSource()==cp.gf.b6 || e.getSource()==cp.gf.tf)
+		{
+			String ss=cp.gf.tf.getText();
+			if(ss.length()<1)
+			{
+				JOptionPane.showMessageDialog(this, "검색어를 입력하세요");
+				cp.gf.tf.requestFocus();
+				return; 
+			}
+			cp.gf.MangoFindData(ss);
+		}
+else if(e.getSource()==cp.bl.b1)
+		{
+			cp.bl.BugsAllData(1);
+		}
+		else if(e.getSource()==cp.bl.b2)
+		{
+			cp.bl.BugsAllData(2);
+		}
+		else if(e.getSource()==cp.bl.b3)
+		{
+			cp.bl.BugsAllData(3);
+		}
+		else if(e.getSource()==cp.bl.b4 || e.getSource()==cp.bl.tf)
+		{
+			String ss=cp.bl.tf.getText();
+			if(ss.length()<1)
+			{
+				JOptionPane.showMessageDialog(this, "검색어를 입력하세요");
+				cp.lf.tf.requestFocus();
+				return; 
+			}
+			cp.bl.BugsFindData(ss);
 		}
 		else if(e.getSource()==cp.ff.b1)// 이전버튼
 		{

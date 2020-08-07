@@ -11,7 +11,7 @@ public class LemonManager {
 	{
 		try
 		{
-			FileInputStream fr=new FileInputStream("c:\\javaDev\\lemon.txt");
+			FileInputStream fr=new FileInputStream("c:\\javaDev\\lemon2.txt");
 			BufferedReader in=new BufferedReader(new InputStreamReader(fr));
 			while(true)
 			{

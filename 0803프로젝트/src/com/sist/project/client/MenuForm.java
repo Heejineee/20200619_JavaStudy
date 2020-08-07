@@ -6,14 +6,21 @@ public class MenuForm extends JPanel {
     // 초기화 (버튼) ==> 배치 (생성자)
     public MenuForm()
     {
-    	//setBackground(Color.orange);
-    	b1=new JButton("홈");
-    	b2=new JButton("영화찾기");
-    	b3=new JButton("영화예매");
-    	b4=new JButton("영화추천");
-    	b5=new JButton("뉴스");
-    	b6=new JButton("영화뮤직");
+ 	   setBackground(Color.white);
+    	b1=new JButton("둘러보기");
+    	b1.setFont(new Font("맑은 고딕",Font.BOLD,15));
+    	b2=new JButton("동네마켓");
+    	b2.setFont(new Font("맑은 고딕",Font.BOLD,15));
+    	b3=new JButton("동네튜터");
+    	b3.setFont(new Font("맑은 고딕",Font.BOLD,15));
+    	b4=new JButton("동네카페");
+    	b4.setFont(new Font("맑은 고딕",Font.BOLD,15));
+    	b5=new JButton("동네뮤직");
+    	b5.setFont(new Font("맑은 고딕",Font.BOLD,15));
+    	b6=new JButton("동네소식");
+    	b6.setFont(new Font("맑은 고딕",Font.BOLD,15));
     	b7=new JButton("종료");
+    	b7.setFont(new Font("맑은 고딕",Font.BOLD,15));
     	
     	setLayout(new GridLayout(7, 1,5,5));
     	add(b1);

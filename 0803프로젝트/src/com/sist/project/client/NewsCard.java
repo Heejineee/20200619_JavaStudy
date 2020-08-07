@@ -12,6 +12,7 @@ public class NewsCard extends JPanel{
     
     public NewsCard()
     {
+ 	   setBackground(Color.white);
     	setLayout(null);
     	poster.setBounds(10,5, 300, 150);
     	add(poster);
@@ -22,6 +23,7 @@ public class NewsCard extends JPanel{
     	add(js);
     	author.setBounds(315, 170, 900, 35);
     	add(author);
+    	
     }
 
     public void newsPrint(NewsVO vo){
@@ -33,6 +35,9 @@ public class NewsCard extends JPanel{
     		title.setText(vo.getTitle());
     		tp.setText(vo.getContent());
     		author.setText(vo.getAuthor());
+        	title.setFont(new Font("¸¼Àº °íµñ",Font.PLAIN,12));
+        	tp.setFont(new Font("¸¼Àº °íµñ",Font.PLAIN,12));
+        	author.setFont(new Font("¸¼Àº °íµñ",Font.PLAIN,12));
     	}catch(Exception ex) {}
     }
 }

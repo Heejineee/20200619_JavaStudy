@@ -14,6 +14,7 @@ public class DetailForm extends JFrame{
    JTextPane ta=new JTextPane();
    public DetailForm()
    {
+	   setBackground(Color.white);
 	   setLayout(null);
 	   poster.setBounds(10, 15, 350, 450);
 	   add(poster);
@@ -41,6 +42,7 @@ public class DetailForm extends JFrame{
    }
    public void detailPrint(int mno)
    {
+	   setBackground(Color.white);
 	   LemonManager m=new LemonManager();
 	   LemonVO vo=m.lemonDetailData(mno);
 	   la1.setText(vo.getTitle());

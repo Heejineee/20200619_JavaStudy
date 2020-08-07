@@ -9,6 +9,9 @@ public class ControllPanel extends JPanel{
    LemonForm ff;
    ClientMainFrame c;
    NewsForm nf=new NewsForm();
+   talingListForm lf2=new talingListForm();
+	MangoListForm gf=new MangoListForm();
+	BugsListForm bl=new BugsListForm();
    public ControllPanel(ClientMainFrame c)
    {
 	   this.c=c;
@@ -18,6 +21,8 @@ public class ControllPanel extends JPanel{
 	   //add("DF",df);
        add("NF",nf);
 	   add("LF",lf);
-	   
+	   add("LF2",lf2);
+	   add("GF",gf);
+	   add("BL",bl);
    }
 }

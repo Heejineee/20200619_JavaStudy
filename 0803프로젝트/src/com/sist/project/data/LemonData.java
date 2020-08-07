@@ -19,14 +19,14 @@ public class LemonData {
 			"https://www.daangn.com/region/%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C"	
 		};
 
-		int mno=384;
+		int mno=78;
 		int cno=5;		
 		try 
 		{
 		Document doc=Jsoup.connect("https://www.daangn.com/region/%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C").get();
 		Elements link=doc.select("a.card-link");
 
-			for(int j=0; j<link.size(); j++)
+			for(int j=0; j<20; j++)
 			{
 				try
 				{
@@ -44,7 +44,7 @@ public class LemonData {
 					System.out.println("Ό³Έν : "+story.text());
 					
 					String msg=mno+"|"+cno+"|"+poster.attr("data-lazy")+"|"+title.text()+"|"+address.text()+"|"+price.text()+"|"+story.text()+"\r\n";
-					FileWriter fw=new FileWriter("c:\\javaDev\\lemon.txt",true);
+					FileWriter fw=new FileWriter("c:\\javaDev\\lemon2.txt",true);
 					fw.write(msg);
 					fw.close();
 					

@@ -35,11 +35,14 @@ public class Login extends JFrame{
     	la3.setBounds(10, 85, 60, 30);
     	rb1.setBounds(75, 85, 70, 30);
     	rb2.setBounds(150, 85, 70, 30);
+    	rb1.setBackground(Color.white);
+    	rb2.setBackground(Color.white);
     	
     	JPanel p=new JPanel();
     	p.add(b1);p.add(b2);
     	
     	p.setBounds(10, 120, 215, 35);
+    	p.setBackground(Color.white);
     	
     	// 윈도우 추가
     	add(la1);add(tf1);
@@ -50,6 +53,7 @@ public class Login extends JFrame{
     	// 윈도우 크기
     	setSize(250, 200);
     	setVisible(true);
+    	 getContentPane().setBackground(Color.white);
     }
 	/*
 	 * public static void main(String[] args) { new Login(); }
